@@ -1,7 +1,12 @@
 import PropTypes from 'prop-types';
 import css from '../ImageGalleryItem/ImageGalleryItem.module.css';
 
-function ImageGalleryItem({ description, smallImage, largeImage, openModal }) {
+export default function ImageGalleryItem({
+  description,
+  smallImage,
+  largeImage,
+  openModal,
+}) {
   return (
     <li className={css.imageGalleryItem} onClick={openModal}>
       <img
@@ -20,5 +25,3 @@ ImageGalleryItem.prototype = {
   largeImage: PropTypes.string.isRequired,
   openModal: PropTypes.func.isRequired,
 };
-
-export default ImageGalleryItem;

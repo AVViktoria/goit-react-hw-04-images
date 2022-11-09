@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 // import { cssTransition } from 'react-toastify';
 import css from '../Modal/Modal.module.css';
 
+// export default function FeedbackOptions({ options, onLeaveFeedback }) {
+
 const modalRoot = document.querySelector('#modal-root');
 class Modal extends Component {
   static propTypes = {

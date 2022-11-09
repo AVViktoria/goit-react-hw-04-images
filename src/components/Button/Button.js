@@ -2,9 +2,8 @@ import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import css from '../Button/Button.module.css';
-// className={css.buttonLoadMore}
 
-function ButtonLoad({ onNextFetch }) {
+export default function ButtonLoad({ onNextFetch }) {
   return (
     <div className={css.buttonLoadMore}>
       <Button
@@ -22,5 +21,3 @@ function ButtonLoad({ onNextFetch }) {
 ButtonLoad.prototype = {
   onNextFetch: PropTypes.func.isRequired,
 };
-
-export default ButtonLoad;

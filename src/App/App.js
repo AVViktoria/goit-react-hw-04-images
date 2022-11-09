@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import fetchImages from 'services/images-api';
-import { Searchbar } from 'components/SearchBar/SearchBar';
+import Searchbar from 'components/SearchBar/SearchBar';
 import ImageGallery from 'components/ImageGallery/ImageGallery';
 import ButtonLoad from 'components/Button/Button';
 import Loader from 'components/Loader/Loader';

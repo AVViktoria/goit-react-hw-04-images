@@ -1,6 +1,9 @@
 import React from 'react';
 import { ThreeDots } from 'react-loader-spinner';
 import css from '../Loader/Loader.module.css';
+
+// export default function FeedbackOptions({ options, onLeaveFeedback }) {
+
 const Loader = () => {
   return (
     <div className={css.loaderCover}>
