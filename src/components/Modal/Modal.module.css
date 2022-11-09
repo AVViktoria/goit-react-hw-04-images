@@ -1,0 +1,47 @@
+.backdrop {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1200;
+}
+
+.modal {
+  position: relative;
+  max-width: calc(100vw - 48px);
+  max-height: calc(100vh - 24px);
+}
+.button {
+  position: absolute;
+  cursor: pointer;
+  border-radius: 7px;
+  padding: 3px;
+  background-color: rgb(246, 190, 117);
+  top: 15px;
+  right: 15px;
+  z-index: 1;
+}
+/* max-width: calc(100vw - 48px);
+  max-height: calc(100vh - 24px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: transparent;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  transform: translate(-50%, -50%);
+  transition: transform 1000ms;
+}
+.modal__img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  border-radius: 4px;
+} */
