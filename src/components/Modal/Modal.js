@@ -27,7 +27,7 @@ export default function Modal() {
   // };
 
   // render() {
-  const { onClose, currentImageUrl, currentImageDescription } = this.props;
+  // const { onClose, currentImageUrl, currentImageDescription } = this.props;
 
   return createPortal(
     <div className={css.backdrop} onClick={handleClickBackdrop}>

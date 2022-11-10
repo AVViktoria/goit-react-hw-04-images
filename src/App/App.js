@@ -1,4 +1,5 @@
-import { Component } from 'react';
+// import { useState, useEffect } from 'react';
+import React, { Component } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import fetchImages from 'services/images-api';
@@ -8,8 +9,21 @@ import ButtonLoad from 'components/Button/Button';
 import Loader from 'components/Loader/Loader';
 import Modal from 'components/Modal/Modal';
 import css from '../App/App.module.css';
+import { SecurityUpdateGood } from '@mui/icons-material';
 
-class App extends Component {
+export default function App() {
+  
+//   const [query, setQuery] = useState('');
+//   const [page, setPage] = useState(1);
+//   const [imagesOnPage, setImagesOnPage] = useState(0);
+//   const [totalImages, setTotalImages] = useState(0);
+// const [isLoading, setIsLoading] = useState(false);
+//   const [showModal, setShowModal] = useState(false);
+//   const [images, setImages] = useState(null);
+//   const [error, setError] = useState(null);
+//   const [currentImageUrl, setCurrentImageUrl] = useState(null);
+//   const [currentImageDescription, setCurrentImageDescription] = useState(null);
+
   state = {
     query: '',
     page: 1,
@@ -25,8 +39,7 @@ class App extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { query, page } = this.state;
-
-    if (prevState.query !== query) {
+  if (prevState.query !== query) {
       this.setState(({ isLoading }) => ({ isLoading: !isLoading }));
       fetchImages(query)
         .then(({ hits, totalHits }) => {
@@ -75,14 +88,65 @@ class App extends Component {
         );
     }
   }
+  // useEffect(() => {
+    // this.setState(({ isLoading }) => ({ isLoading: !isLoading }));
+    // fetchImages(query)
+    //     .then(({ hits, totalHits }) => {
+    //       const imagesArray = hits.map(hit => ({
+    //         id: hit.id,
+    //         description: hit.tags,
+    //         smallImage: hit.webformatURL,
+    //         largeImage: hit.largeImageURL,
+    //       }));
+
+    //       return this.setState({
+    //         page: 1,
+    //         images: imagesArray,
+    //         imagesOnPage: imagesArray.length,
+    //         totalImages: totalHits,
+    //       });
+    //     })
+    //     .catch(error => this.setState({ error }))
+    //     .finally(() =>
+    //       this.setState(({ isLoading }) => ({ isLoading: !isLoading }))
+    //     );
+    // },[query])
+
+    // useEffect(() => {
+    //   this.setState(({ isLoading }) => ({ isLoading: !isLoading }));
+
+    //   fetchImages(query, page)
+    //     .then(({ hits }) => {
+    //       const imagesArray = hits.map(hit => ({
+    //         id: hit.id,
+    //         description: hit.tags,
+    //         smallImage: hit.webformatURL,
+    //         largeImage: hit.largeImageURL,
+    //       }));
+
+    //       return this.setState(({ images, imagesOnPage }) => {
+    //         return {
+    //           images: [...images, ...imagesArray],
+    //           imagesOnPage: imagesOnPage + imagesArray.length,
+    //         };
+    //       });
+    //     })
+    //     .catch(error => this.setState({ error }))
+    //     .finally(() =>
+    //       this.setState(({ isLoading }) => ({ isLoading: !isLoading }))
+    //     );
+    // },[page])
+    
 
   getSearchRequest = query => {
     this.setState({ query });
   };
 
   onNextFetch = () => {
-    this.setState(({ page }) => ({ page: page + 1 }));
+    // this.setState(({ page }) => ({ page: page + 1 }));
+    setPage(state => state+1)
   };
+
 
   toggleModal = () => {
     this.setState(({ showModal }) => ({ showModal: !showModal }));
@@ -101,7 +165,7 @@ class App extends Component {
     }
   };
 
-  render() {
+  // render() {
     const {
       images,
       imagesOnPage,
@@ -141,6 +205,5 @@ class App extends Component {
       </div>
     );
   }
-}
+// }
 
-export default App;
