@@ -14,12 +14,12 @@ import css from '../App/App.module.css';
 export default function App() {
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
-  const [imagesOnPage, setImagesOnPage] = useState(0);
-  const [totalImages, setTotalImages] = useState(0);
+  const [imagesOnPage] = useState(0);
+  const [totalImages] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [images, setImages] = useState(null);
-  const [error, setError] = useState(null);
+  const [images] = useState(null);
+  const [setError] = useState(null);
   // const [currentImageUrl, setCurrentImageUrl] = useState(null);
   // const [currentImageDescription, setCurrentImageDescription] = useState(null);
 
@@ -106,8 +106,8 @@ export default function App() {
       {showModal && (
         <Modal
           onClose={toggleModal}
-          currentImageUrl={currentImageUrl}
-          currentImageDescription={currentImageDescription}
+          // currentImageUrl={currentImageUrl}
+          // currentImageDescription={currentImageDescription}
         />
       )}
 
