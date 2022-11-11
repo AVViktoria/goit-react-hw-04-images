@@ -1,34 +1,23 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
-// import { cssTransition } from 'react-toastify';
 import css from '../Modal/Modal.module.css';
 
 const modalRoot = document.querySelector('#modal-root');
-export default function Modal() {
-  // const componentDidMount = () => {
-  //   window.addEventListener('keydown', handleKeyDown);
-  // };
+export default function Modal({
+  onClose,
+  currentImageUrl,
+  currentImageDescription,
+}) {
+  useEffect(() => {
+    const handleKeyDown = e => e.code === 'Escape' && onClose();
 
-  // const componentWillUnmount = () => {
-  //   window.removeEventListener('keydown', handleKeyDown);
-  // };
-
-  const handleClickBackdrop = e => {
-    if (e.target === e.currentTarget) {
-      // this.props.onClose();
-    }
-  };
-
-  // const handleKeyDown = e => {
-  //   if (e.code === 'Escape') {
-  //     this.props.onClose();
-  //   }
-  // };
-
-  // render() {
-  // const { onClose, currentImageUrl, currentImageDescription } = this.props;
-
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [onClose]);
+  const handleClickBackdrop = e => e.target === e.currentTarget && onClose();
   return createPortal(
     <div className={css.backdrop} onClick={handleClickBackdrop}>
       <div className={css.modal}>
