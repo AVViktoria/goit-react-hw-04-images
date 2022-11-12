@@ -19,7 +19,7 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [images, setImages] = useState(null);
-  // const [error, setError] = useState(null);
+  const [error, setError] = useState(null);
   const [currentImageUrl, setCurrentImageUrl] = useState(null);
   const [currentImageDescription, setCurrentImageDescription] = useState(null);
 
@@ -43,6 +43,7 @@ export default function App() {
         setImagesOnPage(prev => prev + imagesArray.length);
         setTotalImages(res.totalImages);
       })
+      .catch(error => setError(error), setIsLoading(false))
       // .catch(() => setError(error => error))
       .finally(setIsLoading(isLoading => isLoading));
   }, [query, page]);
