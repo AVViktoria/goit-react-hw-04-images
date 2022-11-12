@@ -43,7 +43,7 @@ export default function App() {
         setImagesOnPage(prev => prev + imagesArray.length);
         setTotalImages(res.totalImages);
       })
-      .catch(error => setError(error), setIsLoading(false))
+      .catch(error => setError(error))
       // .catch(() => setError(error => error))
       .finally(setIsLoading(isLoading => isLoading));
   }, [query, page]);
