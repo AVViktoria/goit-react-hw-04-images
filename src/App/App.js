@@ -29,6 +29,7 @@ export default function App() {
       return;
     }
     setIsLoading(state => !state);
+    // setIsLoading(true);
     fetchImages(query, page)
       .then(res => {
         const imagesArray = res.hits.map(hit => {
@@ -41,11 +42,13 @@ export default function App() {
         });
         setImages(prev => [...prev, ...imagesArray]);
         setImagesOnPage(prev => prev + imagesArray.length);
-        setTotalImages(res.totalImages);
+        setTotalImages(res.totalHits);
+        // setIsLoading(true);
+        // setIsLoading(prev => !prev);
       })
       // .catch(error => setError(error))
       // .catch(() => setError(error => error))
-      .finally(setIsLoading(isLoading => isLoading));
+      .finally(() => setIsLoading(prev => !prev));
   }, [query, page]);
 
   //* .        done     //
