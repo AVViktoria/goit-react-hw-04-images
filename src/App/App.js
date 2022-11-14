@@ -43,14 +43,15 @@ export default function App() {
         setImages(prev => [...prev, ...imagesArray]);
         setImagesOnPage(prev => prev + imagesArray.length);
         setTotalImages(res.totalHits);
-        if (imagesArray.length === 0) {
+        if (res.totalHits === 0) {
           setIsLoading(false);
-          throw new toast.error('Something went wrong!');
+          throw new toast.error('Change the name and try again!');
         }
       })
       .catch(error => {
-        console.log(error);
+        // console.log(error);
         toast.error('Something went wrong!');
+        // toast.error('Change the name and try again!');
         setIsLoading(false);
       })
       .finally(() => setIsLoading(prev => !prev));
