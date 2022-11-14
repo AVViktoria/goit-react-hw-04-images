@@ -36,7 +36,6 @@ export default function Modal({
 }
 
 Modal.propTypes = {
-  title: PropTypes.string,
   onClose: PropTypes.func.isRequired,
   currentImageUrl: PropTypes.string,
   currentImageDescription: PropTypes.string,
