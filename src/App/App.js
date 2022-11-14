@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import React from 'react';
-import { ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import fetchImages from 'services/images-api';
 import Searchbar from 'components/SearchBar/SearchBar';
@@ -28,8 +28,8 @@ export default function App() {
     if (query === '') {
       return;
     }
-    setIsLoading(state => !state);
-    // setIsLoading(true);
+    // setIsLoading(state => !state);
+    setIsLoading(true);
     fetchImages(query, page)
       .then(res => {
         const imagesArray = res.hits.map(hit => {
@@ -43,11 +43,16 @@ export default function App() {
         setImages(prev => [...prev, ...imagesArray]);
         setImagesOnPage(prev => prev + imagesArray.length);
         setTotalImages(res.totalHits);
-        // setIsLoading(true);
-        // setIsLoading(prev => !prev);
+        if (imagesArray.length === 0) {
+          setIsLoading(false);
+          throw new toast.error('Something went wrong!');
+        }
       })
-      // .catch(error => setError(error))
-      // .catch(() => setError(error => error))
+      .catch(error => {
+        console.log(error);
+        toast.error('Something went wrong!');
+        setIsLoading(false);
+      })
       .finally(() => setIsLoading(prev => !prev));
   }, [query, page]);
 
