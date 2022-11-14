@@ -51,7 +51,7 @@ export default function App() {
       .catch(error => {
         // console.log(error);
         toast.error('Something went wrong!');
-        // toast.error('Change the name and try again!');
+        // throw new toast.error('Change the name and try again!');
         setIsLoading(false);
       })
       .finally(() => setIsLoading(prev => !prev));
